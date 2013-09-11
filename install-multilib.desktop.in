@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Application;System
+Exec=install-multilib
+Icon=install-multilib
+_Name=install multilib
+Terminal=true
+Type=Application
+Version=1.0.0
+

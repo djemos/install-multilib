@@ -1,0 +1,146 @@
+#!/bin/bash
+##################################################################
+####                      install-multilib                    ####
+##################################################################
+# This script created for slackel/salix x86_64 only.
+#
+# It install the binaries in order to support 32-bit applications
+#
+# 
+#
+#
+# The installation and instructions found on the below web site
+# http://connie.slackware.com/~alien/multilib/
+#
+#
+#
+#
+##################################################################
+
+
+init(){
+		
+		if [ "$UID" != "0" ]; then
+			echo "You need to be root to run this"
+			exit 1
+		fi
+		
+	    unset SLACK_VER
+        # Translations only work with utf8 locales
+        if [ ! `echo $LANG | grep -i utf` ]; then
+                LANG=C
+        fi
+
+        # Gettext internationalization
+        export TEXTDOMAIN="install-multilib"
+        export TEXTDOMAINDIR="/usr/share/locale"
+        . gettext.sh
+        
+        # Path needs to be extended in case you're only half a root :)
+        export PATH="/usr/sbin:/sbin:${PATH}"
+
+backtohome=$(pwd)
+}
+
+usage(){
+        echo "`eval_gettext 'USAGE: install-multilib [salix|slackel] [local|download]'`"
+        echo
+        echo "`eval_gettext 'OPTIONS:'`"
+        echo "`eval_gettext '   salix,   Install multilib for all Salix versions'`"
+        echo "`eval_gettext '   slackel, Install multilib for slackel current'`"
+        echo "`eval_gettext '   local,   Installing from the local repo'`"
+        echo "`eval_gettext '   download,  Download the packages, converting and installing them...'`"
+        exit 1
+}
+
+# Check which options are used from the command line
+checkoptions(){
+        flag=$1
+        flagr=$2
+        
+		if [ $# -gt 2 ] ; then
+				echo "`eval_gettext 'ERROR: Too many arguments'`"
+				usage
+		fi
+		
+        if [[ $flagr = "download" ]]; then
+			export reply="download"
+        elif [[ $flagr = "local" ]]; then
+			export reply="local"
+		else
+		   usage
+        fi
+ 
+        #if switch is unknown or if asking for help
+		if [[ $flag = "help" ]] || [[ $flag = "h" ]]; then
+			usage  
+		elif [[ $flag = "slackel" ]]; then
+			export SLACK_VER="current"
+	    elif [[ $flag = "salix" ]]; then
+			export SLACK_VER=`cat /etc/slackware-version | cut -c11-18`
+		else
+			usage
+		fi		
+		
+}
+
+execute_script(){
+	
+ARCH=`uname -m`
+if [ $ARCH = "x86_64" ]; then
+        which lftp > /dev/null
+        if [ $? -eq 1 ]; then
+                echo "You need lftp... installing it"
+                slapt-get --install lftp -y
+        fi
+        
+        echo "Download the 32bit packages for $DISTRO: " $SLACK_VER
+        echo "Please wait..."
+        echo ""
+         lftp -c "open http://slackware.com/~alien/multilib/ ; mirror $SLACK_VER"
+         
+        cd $SLACK_VER
+        echo "Upgrading/Installing gcc/glibc 64-bit...and new pkg"
+        upgradepkg --reinstall --install-new *.t?z
+        echo "Done"
+        
+        echo "Installing the 32-bit pkgs"
+        echo "5 sec for sleeping...I have a lot of work to do..."
+        sleep 5;
+        #echo -n "Do you want to download the most recent packages or to install the packages which are already downloaded? [Download/Local]: "
+        #read reply
+        case $reply in
+                download)
+                        echo "Download the packages, converting and installing them..."
+                        mkdir $PWD/tmp
+                        cd tmp
+                        massconvert32.sh -u http://slackware.mirrors.tds.net/pub/slackware/slackware-$SLACK_VER/slackware/
+                        upgradepkg --reinstall --install-new *-compat32/*.t?z
+                        echo "Done"
+                        exit 0
+                        ;;
+                local)
+                        echo "Installing from the local repo"
+                        upgradepkg --reinstall --install-new $PWD/slackware64-compat32/*-compat32/*.t?z
+                        echo "Done"
+                        exit 0
+                        ;;
+                *)      echo "Default is local...Proceed with installation"
+                        upgradepkg --reinstall --install-new $PWD/slackware64-compat32/*-compat32/*.t?z
+                        echo "Done"
+                        exit 0
+                        ;;
+        esac
+echo "Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get"
+else
+echo "Run this script on a x86_64 system"
+fi
+}
+
+init
+
+checkoptions $@
+
+execute_script
+cd $backtohome
+rm -rf $SLACK_VER
