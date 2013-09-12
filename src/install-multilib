@@ -50,6 +50,9 @@ usage(){
         echo "`eval_gettext '   slackel, Install multilib for slackel current'`"
         echo "`eval_gettext '   local,   Installing from the local repo'`"
         echo "`eval_gettext '   download,  Download the packages, converting and installing them...'`"
+        echo "`eval_gettext '================================== ATTENSION ==============================='`"
+        echo "`eval_gettext 'Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get'`"
+        echo "`eval_gettext '============================================================================'`"
         exit 1
 }
 
@@ -88,6 +91,9 @@ execute_script(){
 	
 ARCH=`uname -m`
 if [ $ARCH = "x86_64" ]; then
+        echo "============================= ATTENSION ===================================="
+        echo "Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get"
+        echo "============================================================================"
         which lftp > /dev/null
         if [ $? -eq 1 ]; then
                 echo "You need lftp... installing it"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-09 20:32+0300\n"
-"PO-Revision-Date: 2013-09-09 20:29+0200\n"
+"POT-Creation-Date: 2013-09-12 19:46+0300\n"
+"PO-Revision-Date: 2013-09-12 19:48+0200\n"
 "Last-Translator: Dimitris Tzemos <djemos@slackel.gr>\n"
 "Language-Team: salix <djemos@slackel.gr>\n"
 "Language: el\n"
@@ -50,7 +50,27 @@ msgstr "   local,   εγκατάσταση από το τοπικό αποθετ
 msgid "   download,  Download the packages, converting and installing them..."
 msgstr "download,  Μεταφόρτωση πακέτων, μετατροπή και εγκατάσταση αυτών..."
 
-#: src/install-multilib:62
+#: src/install-multilib:53
+#, sh-format
+msgid ""
+"================================== ATTENSION ==============================="
+msgstr ""
+"================================== ΠΡΟΣΟΧΗ ==============================="
+
+#: src/install-multilib:54
+#, sh-format
+msgid ""
+"Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get"
+msgstr ""
+"Παρακαλώ προσθέστε στη blacklist το gcc* και glibc*, για να μην ενημερωθούν "
+"με το slapt-get"
+
+#: src/install-multilib:55
+#, sh-format
+msgid "============================================================================"
+msgstr "============================================================================"
+
+#: src/install-multilib:65
 #, sh-format
 msgid "ERROR: Too many arguments"
 msgstr "ΛΑΘΟΣ: Πάρα πολλές παράμετροι"

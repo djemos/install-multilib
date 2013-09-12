@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-11 20:51+0300\n"
+"POT-Creation-Date: 2013-09-12 19:48+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,24 @@ msgstr ""
 msgid "   download,  Download the packages, converting and installing them..."
 msgstr ""
 
-#: src/install-multilib:62
+#: src/install-multilib:53
+#, sh-format
+msgid ""
+"================================== ATTENSION ==============================="
+msgstr ""
+
+#: src/install-multilib:54
+#, sh-format
+msgid ""
+"Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get"
+msgstr ""
+
+#: src/install-multilib:55
+#, sh-format
+msgid "============================================================================"
+msgstr ""
+
+#: src/install-multilib:65
 #, sh-format
 msgid "ERROR: Too many arguments"
 msgstr ""
