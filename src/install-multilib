@@ -41,7 +41,7 @@ init(){
         # Path needs to be extended in case you're only half a root :)
         export PATH="/usr/sbin:/sbin:${PATH}"
 
-backtohome=$(pwd)
+export backtohome=$(pwd)
 }
 
 usage(){
@@ -109,7 +109,7 @@ if [ $ARCH = "x86_64" ]; then
          
         cd $SLACK_VER
         echo "Upgrading/Installing gcc/glibc 64-bit...and new pkg"
-        upgradepkg --reinstall --install-new *.t?z
+         upgradepkg --reinstall --install-new *.t?z
         echo "Done"
         
         echo "Installing the 32-bit pkgs"
@@ -124,17 +124,23 @@ if [ $ARCH = "x86_64" ]; then
                         cd tmp
                         massconvert32.sh -u http://slackware.mirrors.tds.net/pub/slackware/slackware-$SLACK_VER/slackware/
                         upgradepkg --reinstall --install-new *-compat32/*.t?z
+                        cd $backtohome
+                        rm -rf $SLACK_VER
                         echo "Done"
                         exit 0
                         ;;
                 local)
                         echo "Installing from the local repo"
                         upgradepkg --reinstall --install-new $PWD/slackware64-compat32/*-compat32/*.t?z
+                        cd $backtohome
+                        rm -rf $SLACK_VER 
                         echo "Done"
                         exit 0
                         ;;
                 *)      echo "Default is local...Proceed with installation"
                         upgradepkg --reinstall --install-new $PWD/slackware64-compat32/*-compat32/*.t?z
+                        cd $backtohome
+                        rm -rf $SLACK_VER
                         echo "Done"
                         exit 0
                         ;;
@@ -146,9 +152,6 @@ fi
 }
 
 init
-
 checkoptions $@
-
 execute_script
-cd $backtohome
-rm -rf $SLACK_VER
+
