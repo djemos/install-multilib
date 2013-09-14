@@ -1,21 +1,23 @@
 #!/bin/bash
-##################################################################
-####                      install-multilib                    ####
-##################################################################
-# This script created for slackel/salix x86_64 only.
-#
-# It install the binaries in order to support 32-bit applications
-#
-# 
-#
-#
-# The installation and instructions found on the below web site
-# http://connie.slackware.com/~alien/multilib/
-#
-#
-#
-#
-##################################################################
+###################################################################
+####                      install-multilib                     ####
+###################################################################
+# This script created for slackel/salix x86_64 only.              #
+#                                                                 #
+# It install the binaries in order to support 32-bit applications #
+#                                                                 #
+#                                                                 #
+#                                                                 #
+#                                                                 #
+# The installation and instructions found on the below web site   #
+# http://connie.slackware.com/~alien/multilib/                    #
+#                                                                 #
+# Dimitris Tzemos <djemos~at~slackel~dot~gr>                      #
+# George Kapellakis <george~dot~kapellakis~at~yandex~dot~com>     #
+#                                                                 #
+#                                                                 #
+#                                                                 #
+###################################################################
 
 
 init(){
