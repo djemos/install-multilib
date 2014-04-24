@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 19:48+0300\n"
+"POT-Creation-Date: 2014-04-23 20:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,54 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/install-multilib:46
+#: src/install-multilib:48
 #, sh-format
 msgid "USAGE: install-multilib [salix|slackel] [local|download]"
 msgstr ""
 
-#: src/install-multilib:48
+#: src/install-multilib:50
 #, sh-format
 msgid "OPTIONS:"
 msgstr ""
 
-#: src/install-multilib:49
+#: src/install-multilib:51
 #, sh-format
 msgid "   salix,   Install multilib for all Salix versions"
 msgstr ""
 
-#: src/install-multilib:50
+#: src/install-multilib:52
 #, sh-format
 msgid "   slackel, Install multilib for slackel current"
 msgstr ""
 
-#: src/install-multilib:51
+#: src/install-multilib:53
 #, sh-format
 msgid "   local,   Installing from the local repo"
 msgstr ""
 
-#: src/install-multilib:52
+#: src/install-multilib:54
 #, sh-format
 msgid "   download,  Download the packages, converting and installing them..."
 msgstr ""
 
-#: src/install-multilib:53
-#, sh-format
-msgid ""
-"================================== ATTENSION ==============================="
-msgstr ""
-
-#: src/install-multilib:54
-#, sh-format
-msgid ""
-"Please add in blacklist gcc* and glibc*, for not upgrade them with slapt-get"
-msgstr ""
-
 #: src/install-multilib:55
 #, sh-format
-msgid "============================================================================"
+msgid ""
+"================================== ATTENSION ================================"
 msgstr ""
 
-#: src/install-multilib:65
+#: src/install-multilib:56
+#, sh-format
+msgid ""
+"gcc* and glibc* will be added to blacklist to not upgrade them with slapt-get"
+msgstr ""
+
+#: src/install-multilib:57
+#, sh-format
+msgid "============================================================================="
+msgstr ""
+
+#: src/install-multilib:67
 #, sh-format
 msgid "ERROR: Too many arguments"
 msgstr ""
