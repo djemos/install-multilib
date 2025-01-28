@@ -153,7 +153,7 @@ fi
 
 blacklist_gcc(){
 	if [ -f /etc/slapt-get/slapt-getrc ]; then
-		sed -i 's/EXCLUDE=^aaa_elflibs,^aaa_base,^devs,^glibc.*,^kernel-.*,^udev,^rootuser-settings,^zzz-settings.*,-i?86-/EXCLUDE=^aaa_elflibs,^aaa_base,^devs,^glibc.*,^kernel-.*,^udev,^rootuser-settings,^zzz-settings.*,-i?86-,^gcc*/g' /etc/slapt-get/slapt-getrc
+		sed -i 's/EXCLUDE=^aaa_base,^devs,^glibc.*,^kernel-.*,^rootuser-settings,^zzz-settings.*,-i?86-/EXCLUDE=^aaa_base,^devs,^glibc.*,^kernel-.*,^rootuser-settings,^zzz-settings.*,-i?86-,^gcc*/g' /etc/slapt-get/slapt-getrc
 	fi
 echo "gcc* and glibc* added to blacklist to not upgrade them with slapt-get"
 }
