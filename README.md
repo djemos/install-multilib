@@ -7,9 +7,9 @@ system.
 USAGE: install-multilib [salix|slackel] [local|download]
 
 OPTIONS:
-salix,   Install multilib for all Salix versions
+salix,   Install multilib for all Salix versions, slackware stable
 
-slackel, Install multilib for slackel current
+slackel, Install multilib for slackel, slackware current
 
 local,   Installing from the local repo
 
