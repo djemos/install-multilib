@@ -8,8 +8,11 @@ USAGE: install-multilib [salix|slackel] [local|download]
 
 OPTIONS:
 salix,   Install multilib for all Salix versions
+
 slackel, Install multilib for slackel current
+
 local,   Installing from the local repo
+
 download,  Download the packages, converting and installing them...
 
 ATTENSION:
