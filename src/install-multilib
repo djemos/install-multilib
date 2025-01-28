@@ -122,7 +122,7 @@ if [ $ARCH = "x86_64" ]; then
                         echo "Download the packages, converting and installing them..."
                         mkdir $PWD/tmp
                         cd tmp
-                        massconvert32.sh -u http://slackware.mirrors.tds.net/pub/slackware/slackware-$SLACK_VER/slackware/
+                        massconvert32.sh -u https://slackware.uk/slackware/slackware-$SLACK_VER/slackware/
                         upgradepkg --reinstall --install-new *-compat32/*.t?z
                         cd $backtohome
                         rm -rf $SLACK_VER
